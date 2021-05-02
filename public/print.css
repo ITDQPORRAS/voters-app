@@ -1,0 +1,98 @@
+@page {
+    size: A4 landscape;
+}
+
+.my-table-details {
+    font-size: 0.25em;
+    max-width: 200px;
+    margin-top: 4px;
+}
+
+
+/* #page-wrap {
+	width: 300px;
+	margin: 80px auto;
+} */
+
+.width {
+    width: 25px;
+}
+
+.fontz {
+    font-size: 9px;
+}
+
+.centerz {
+    text-align: center;
+}
+
+
+/* allow table to scroll on medium sized screens*/
+
+.table-wrap {
+    width: 100%;
+    overflow: auto;
+}
+
+
+/* works in modern desktop browsers*/
+
+.sideways {
+    margin: auto;
+    border-collapse: collapse;
+    font-size: 0.7rem;
+    width: 100%;
+    max-width: 1080px;
+}
+
+.sideways caption {
+    font-size: 2rem;
+    border: 0.5px solid black;
+}
+
+.sideways td,
+.sideways th {
+    border: 0.2px solid black;
+    padding: 0.3em;
+    vertical-align: top;
+}
+
+.sideways thead th {
+    text-align: bottom;
+    /* vertical-align: bottom; bottom aligned*/
+    vertical-align: bottom;
+    /* vertically centred*/
+}
+
+.sideways th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+
+/* let ie11 play but don't transform it in case older version read this -thanks to @coothead*/
+
+.sideways thead span {
+    -ms-writing-mode: tb-lr;
+    padding: 0.3em;
+}
+
+
+/* lets just give the rotation to browsers that understand it otherwise they may also get transformed but not rotated. Now older browsers just get a normal table*/
+
+@supports (writing-mode: vertical-lr) {
+    .sideways thead .subhead span {
+        display: inline-block;
+        writing-mode: vertical-lr;
+        white-space: nowrap;
+        transform: rotate(180deg);
+        line-height: 0;
+        padding: 0.3em;
+        /* than ks to @Erik_J*/
+    }
+}
+
+.other {
+    text-align: center;
+}
