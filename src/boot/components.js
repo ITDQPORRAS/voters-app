@@ -24,5 +24,8 @@ const components = {
         import ('#/R-CONTROLS/r-civilStatus'),
     'r-dateTime': () =>
         import ('#/R-CONTROLS/r-dateTime'),
+    'q-voters': () =>
+        import ('#/q-voters'),
+
 }
 Object.entries(components).forEach(([name, component]) => Vue.component(name, component))

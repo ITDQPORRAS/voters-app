@@ -32,37 +32,44 @@ const Mod_voters = {
                 {
                     path: '/Transactions/LeaderSetup',
                     component: () =>
-                        mport('pages/Transaction/LeaderSetup'),
+                        import ('pages/Transaction/LeaderSetup'),
                     name: '/LeaderSetup',
                     meta: { title: 'Leader Setup', icon: 'rule', requiresAuth: true, access: ['initiate'] },
                 },
                 {
                     path: '/Transactions/ConfirmMember',
                     component: () =>
-                        mport('pages/Transaction/Confirm Member'),
+                        import ('pages/Transaction/ConfirmMember'),
                     name: '/Confirm Member',
                     meta: { title: 'Confirm Member', icon: 'rule', requiresAuth: true, access: ['initiate'] },
                 },
                 {
                     path: '/Transactions/Watchers',
                     component: () =>
-                        mport('pages/Transaction/Watchers'),
+                        import ('pages/Transaction/Watchers'),
                     name: '/Watchers',
                     meta: { title: 'Watchers', icon: 'rule', requiresAuth: true, access: ['initiate'] },
                 },
                 {
                     path: '/Transactions/Counting',
                     component: () =>
-                        mport('pages/Transaction/Counting'),
+                        import ('pages/Transaction/Counting'),
                     name: '/Counting',
                     meta: { title: 'Counting', icon: 'rule', requiresAuth: true, access: ['initiate'] },
                 },
                 {
                     path: '/Transactions/Tally',
                     component: () =>
-                        mport('pages/Transaction/Tally'),
+                        import ('pages/Transaction/Tally'),
                     name: '/Tally',
                     meta: { title: 'Tally', icon: 'rule', requiresAuth: true, access: ['initiate'] },
+                },
+                {
+                    path: '/Transactions/SMS',
+                    component: () =>
+                        import ('pages/Transaction/SMS'),
+                    name: '/SMS',
+                    meta: { title: 'SMS', icon: 'rule', requiresAuth: true, access: ['initiate'] },
                 },
             ],
         },
