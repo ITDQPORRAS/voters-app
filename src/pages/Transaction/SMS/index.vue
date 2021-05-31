@@ -4,18 +4,8 @@
 			<q-card class="my-card q-pa-sm">
 				<div class="row">
 					<div class="col-12 col-md-12 q-pb-sm">
-						<q-select
-							bottom-slots
-							option-value="id"
-							option-label="profile_name"
-							stack-label
-							v-model="profile"
-							:options="profileData"
-							label="Profile"
-							emit-value
-							map-options
-						>
-						</q-select>
+						<!-- <q-input v-model="text" type="textarea" label="Message" /> -->
+						<q-input v-model="Message" filled autogrow label="Message" />
 					</div>
 				</div>
 				<div class="row q-col-gutter-sm">
@@ -47,26 +37,33 @@
 									></q-input>
 								</q-th>
 							</template>
-							<template v-slot:header-cell-select="props">
+							<template v-slot:header-cell-no="props">
 								<q-th :props="props">
-									<q-checkbox
-										bottom-label
-										label="All"
-										size="xs"
+									<q-input
+										v-model="group.number"
+										:label="props.col.label"
+										type="text"
 										dense
-										v-model="chkall"
-									/>
+									></q-input>
 								</q-th>
 							</template>
 
-							<template v-slot:body-cell-select="props">
+							<template v-slot:body-cell-no="props">
 								<q-td :props="props">
-									<q-checkbox
+									<!-- <q-checkbox
 										size="xs"
 										dense
 										v-model="props.row.Selected"
 										true-value="1"
 										false-value="0"
+									/> -->
+									<q-btn
+										size="sm"
+										color="primary"
+										flat
+										:label="props.value"
+										@click="onAdd(props.row)"
+										icon-right="send"
 									/>
 								</q-td>
 							</template>
@@ -76,7 +73,6 @@
 						<q-table
 							class="my-sticky-header-table"
 							flat
-							title="Benificiaries"
 							bordered
 							:columns="headersMember"
 							:data="selectedFilter"
@@ -89,9 +85,9 @@
 							:loading="loading"
 							row-key="id"
 						>
-							<template v-slot:top-left>
+							<!-- <template v-slot:top-left>
 								<q-btn flat round icon="fast_rewind" @click="Remove" />
-							</template>
+							</template> -->
 							<template v-slot:header-cell-select="props">
 								<q-th :props="props">
 									<q-checkbox
@@ -104,7 +100,7 @@
 								</q-th>
 							</template>
 							<template v-slot:top-right>Send To</template>
-							<template v-slot:header-cell-title="props">
+							<template v-slot:header-cell-name="props">
 								<q-th :props="props">
 									<q-input
 										v-model="select.title"
@@ -114,14 +110,22 @@
 									></q-input>
 								</q-th>
 							</template>
-							<template v-slot:body-cell-select="props">
+							<template v-slot:body-cell-no="props">
 								<q-td :props="props">
-									<q-checkbox
+									<!-- <q-checkbox
 										size="xs"
 										dense
 										v-model="props.row.Selected"
 										true-value="1"
 										false-value="0"
+									/> -->
+									<q-btn
+										size="sm"
+										color="negative"
+										flat
+										icon="clear"
+										:label="props.value"
+										@click="onRemove(props.row)"
 									/>
 								</q-td>
 							</template>
@@ -147,11 +151,8 @@
 </template>
 <script>
 import Resource from "@/api/resource";
-
-// import command from "#/Command";
 export default {
 	name: "list",
-	// components: { command },
 	data() {
 		return {
 			dlgProfile: false,
@@ -159,18 +160,20 @@ export default {
 			profileData: [],
 			group: {
 				title: "",
+				number: "",
 			},
 			select: {
 				title: "",
+				number: "",
 			},
 			chkall: false,
 			chkallSelected: false,
 			loading: false,
 			headersGroup: [
 				{
-					name: "select",
-					label: "...",
-					field: "Selected",
+					name: "no",
+					label: "#",
+					field: "Contact No",
 					align: "left",
 					width: "100",
 				},
@@ -178,14 +181,20 @@ export default {
 					name: "name",
 					label: "Full Name",
 					field: "Full Name",
+					align: "left",
+				},
+				{
+					name: "Barangay",
+					label: "Barangay",
+					field: "Barangay",
 					align: "left",
 				},
 			],
 			headersMember: [
 				{
-					name: "select",
-					label: "...",
-					field: "Selected",
+					name: "no",
+					label: "#",
+					field: "Contact No",
 					align: "left",
 					width: "100",
 				},
@@ -193,6 +202,12 @@ export default {
 					name: "name",
 					label: "Full Name",
 					field: "Full Name",
+					align: "left",
+				},
+				{
+					name: "Barangay",
+					label: "Barangay",
+					field: "Barangay",
 					align: "left",
 				},
 			],
@@ -205,6 +220,21 @@ export default {
 		};
 	},
 	methods: {
+		onAdd(item) {
+			// alert(item.voterid);
+			this.listForm.find((x) => {
+				return x.voterid === item.voterid;
+			}).Selected = "1";
+			// console.log(selected);
+		},
+		onRemove(item) {
+			// alert(item.voterid);
+			this.listForm.find((x) => {
+				return x.voterid === item.voterid;
+			}).Selected = "0";
+			// console.log(selected);
+		},
+
 		addProfile() {
 			this.dlgProfile = true;
 		},

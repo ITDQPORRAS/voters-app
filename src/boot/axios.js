@@ -13,8 +13,8 @@ import axios from 'axios'
 // Note that if we wouldn't set any config here we do not need
 // a named export, as we could just `import axios from 'axios'`
 const axiosInstance = axios.create({
-    // baseURL: 'http://localhost/evoters-bck/public/',
-    baseURL: 'http://localhost/evoters-bck/public/api/',
+    baseURL: 'http://localhost:1111/api',
+    // baseURL: 'http://localhost/evoters-bck/public/api/',
     // baseURL: 'http://192.168.1.4:8000/api/',
     withCredentials: true,
     timeout: 40000,
