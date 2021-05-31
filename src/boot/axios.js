@@ -14,7 +14,7 @@ import axios from 'axios'
 // a named export, as we could just `import axios from 'axios'`
 const axiosInstance = axios.create({
 
-    baseURL: 'http://192.168.1.4:8000/api/',
+    baseURL: 'http://localhost:1111/api/',
     withCredentials: true,
     timeout: 40000,
     headers: {
