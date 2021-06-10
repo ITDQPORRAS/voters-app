@@ -92,21 +92,7 @@ const actions = {
     },
     loginGoogle({ commit }, datax) {
         const { email, password } = userInfo;
-        return new Promise((resolve, reject) => {
-
-            // login({ email: email.trim(), password: password })
-            //     .then(response => {
-
-            //         commit('SET_TOKEN', response.data.token);
-            //         commit('SET_ACCESS', response.data.access);
-            //         // console.log(response.data.token)
-            //         setToken(response.data.token);
-            //         resolve(response);
-            //     })
-            //     .catch(error => {
-            //         reject(error);
-            //     });
-        });
+        return new Promise((resolve, reject) => {});
     },
     access({ commit }) {
         return new Promise((resolve, reject) => {

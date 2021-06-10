@@ -18,6 +18,6 @@ const getters = {
     permissions: state => state.user.permissions,
     permission_routes: state => state.permission.routes,
     addRoutes: state => state.permission.addRoutes,
-
+    groupList: state => state.global.group,
 };
 export default getters;

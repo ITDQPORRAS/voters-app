@@ -15,7 +15,7 @@ import axios from 'axios'
 const axiosInstance = axios.create({
     baseURL: 'http://localhost:1111/api',
     // baseURL: 'http://localhost/evoters-bck/public/api/',
-    // baseURL: 'http://192.168.1.4:8000/api/',
+    // baseURL: 'http://3.143.230.253/evoters-bck/public/api/',
     withCredentials: true,
     timeout: 40000,
     headers: {
